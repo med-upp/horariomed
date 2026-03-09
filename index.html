@@ -200,6 +200,8 @@ font-weight:500;
 
 <h2>Semiología</h2>
 
+<input type="color" value="#6b8cff" onchange="cambiarColor('semio',this.value)">
+
 <select id="T" onchange="semio()">
 <option value="">T</option>
 <option value="2829">2829 T1 (L-M-X-J-S)</option>
@@ -227,6 +229,8 @@ font-weight:500;
 
 <h2>Médico Paciente</h2>
 
+<input type="color" value="#a78bfa" onchange="cambiarColor('mp',this.value)">
+
 <select id="mpA" onchange="actualizarMP()">
 
 <option value="">A</option>
@@ -244,6 +248,8 @@ font-weight:500;
 
 <h2>Diagnóstico por Imágenes</h2>
 
+<input type="color" value="#4ade80" onchange="cambiarColor('dx',this.value)">
+
 <select id="dxT" onchange="actualizarDX()">
 
 <option value="">T</option>
@@ -259,6 +265,8 @@ font-weight:500;
 
 <h2>Informática Médica</h2>
 
+<input type="color" value="#fbbf24" onchange="cambiarColor('inf',this.value)">
+
 <select id="infT" onchange="actualizarINF()">
 
 <option value="">T</option>
@@ -273,6 +281,8 @@ font-weight:500;
 <select id="infP" onchange="inf()"></select>
 
 <h2>Fisiopatología</h2>
+
+<input type="color" value="#38bdf8" onchange="cambiarColor('fisio',this.value)">
 
 <select id="fisio" onchange="fisio()">
 
@@ -293,6 +303,22 @@ font-weight:500;
 </div>
 
 <script>
+
+  let colorSemio = "#6b8cff"
+let colorMP = "#a78bfa"
+let colorDX = "#4ade80"
+let colorINF = "#fbbf24"
+let colorFISIO = "#38bdf8"
+
+function cambiarColor(curso,color){
+
+if(curso=="semio") colorSemio=color
+if(curso=="mp") colorMP=color
+if(curso=="dx") colorDX=color
+if(curso=="inf") colorINF=color
+if(curso=="fisio") colorFISIO=color
+
+}
 
 function cambiarCiclo(ciclo){
 
@@ -403,11 +429,11 @@ if(T){
 
 let txt="SEMIO T<br>NRC 2829<br>T1"
 
-pintar(1,8,txt,"#3b5fbf")
-pintar(2,10,txt,"#3b5fbf")
-pintar(3,10,txt,"#3b5fbf")
-pintar(4,10,txt,"#3b5fbf")
-pintar(6,10,txt,"#3b5fbf")
+pintar(1,8,txt,"#colorSemio")
+pintar(2,10,txt,"#colorSemio")
+pintar(3,10,txt,"#colorSemio")
+pintar(4,10,txt,"#colorSemio")
+pintar(6,10,txt,"#colorSemio")
 
 }
 
@@ -415,20 +441,20 @@ if(H=="11369"){
 
 let txt="SEMIO H<br>NRC 11369<br>H1"
 
-pintar(1,2,txt,"#3b5fbf")
-pintar(1,3,txt,"#3b5fbf")
-pintar(1,4,txt,"#3b5fbf")
-pintar(1,5,txt,"#3b5fbf")
+pintar(1,2,txt,"#colorSemio")
+pintar(1,3,txt,"#colorSemio")
+pintar(1,4,txt,"#colorSemio")
+pintar(1,5,txt,"#colorSemio")
 
-pintar(3,2,txt,"#3b5fbf")
-pintar(3,3,txt,"#3b5fbf")
-pintar(3,4,txt,"#3b5fbf")
-pintar(3,5,txt,"#3b5fbf")
+pintar(3,2,txt,"#colorSemio")
+pintar(3,3,txt,"#colorSemio")
+pintar(3,4,txt,"#colorSemio")
+pintar(3,5,txt,"#colorSemio")
 
-pintar(5,2,txt,"#3b5fbf")
-pintar(5,3,txt,"#3b5fbf")
-pintar(5,4,txt,"#3b5fbf")
-pintar(5,5,txt,"#3b5fbf")
+pintar(5,2,txt,"#colorSemio")
+pintar(5,3,txt,"#colorSemio")
+pintar(5,4,txt,"#colorSemio")
+pintar(5,5,txt,"#colorSemio")
 
 }
 
@@ -436,31 +462,31 @@ if(H=="11370"){
 
 let txt="SEMIO H<br>NRC 11370<br>H1"
 
-pintar(2,2,txt,"#3b5fbf")
-pintar(2,3,txt,"#3b5fbf")
-pintar(2,4,txt,"#3b5fbf")
-pintar(2,5,txt,"#3b5fbf")
+pintar(2,2,txt,"#colorSemio")
+pintar(2,3,txt,"#colorSemio")
+pintar(2,4,txt,"#colorSemio")
+pintar(2,5,txt,"#colorSemio")
 
-pintar(4,2,txt,"#3b5fbf")
-pintar(4,3,txt,"#3b5fbf")
-pintar(4,4,txt,"#3b5fbf")
-pintar(4,5,txt,"#3b5fbf")
+pintar(4,2,txt,"#colorSemio")
+pintar(4,3,txt,"#colorSemio")
+pintar(4,4,txt,"#colorSemio")
+pintar(4,5,txt,"#colorSemio")
 
-pintar(6,2,txt,"#3b5fbf")
-pintar(6,3,txt,"#3b5fbf")
-pintar(6,4,txt,"#3b5fbf")
-pintar(6,5,txt,"#3b5fbf")
+pintar(6,2,txt,"#colorSemio")
+pintar(6,3,txt,"#colorSemio")
+pintar(6,4,txt,"#colorSemio")
+pintar(6,5,txt,"#colorSemio")
 
 }
 
-if(I=="11371")pintar(5,9,"SEMIO I<br>NRC 11371<br>I1","#3b5fbf")
-if(I=="11374")pintar(5,11,"SEMIO I<br>NRC 11374<br>I1","#3b5fbf")
-if(I=="11373")pintar(5,13,"SEMIO I<br>NRC 11373<br>I1","#3b5fbf")
-if(I=="11372")pintar(5,15,"SEMIO I<br>NRC 11372<br>I1","#3b5fbf")
+if(I=="11371")pintar(5,9,"SEMIO I<br>NRC 11371<br>I1","#colorSemio")
+if(I=="11374")pintar(5,11,"SEMIO I<br>NRC 11374<br>I1","#colorSemio")
+if(I=="11373")pintar(5,13,"SEMIO I<br>NRC 11373<br>I1","#colorSemio")
+if(I=="11372")pintar(5,15,"SEMIO I<br>NRC 11372<br>I1","#colorSemio")
 
-if(I=="11375")pintar(1,11,"SEMIO I<br>NRC 11375<br>I1","#3b5fbf")
-if(I=="11376")pintar(1,13,"SEMIO I<br>NRC 11376<br>I1","#3b5fbf")
-if(I=="11377")pintar(1,15,"SEMIO I<br>NRC 11377<br>I1","#3b5fbf")
+if(I=="11375")pintar(1,11,"SEMIO I<br>NRC 11375<br>I1","#colorSemio")
+if(I=="11376")pintar(1,13,"SEMIO I<br>NRC 11376<br>I1","#colorSemio")
+if(I=="11377")pintar(1,15,"SEMIO I<br>NRC 11377<br>I1","#colorSemio")
 
 }
 
@@ -505,13 +531,13 @@ let texto="MP A<br>A"+A
 if(A<=3){
 
 [11,12,13].forEach(b=>{
-pintar(2,b,texto,"#7c3aed")
+pintar(2,b,texto,"#colorMP")
 })
 
 }else{
 
 [14,15,16].forEach(b=>{
-pintar(2,b,texto,"#7c3aed")
+pintar(2,b,texto,"#colorMP")
 })
 
 }
@@ -527,7 +553,7 @@ let fila={
 
 if(I){
 let texto2="MP I<br>NRC "+I+"<br>I"+A
-pintar(4,fila[I],texto2,"#7c3aed")
+pintar(4,fila[I],texto2,"#colorMP")
 }
 
 }
@@ -578,8 +604,8 @@ if(T==1){
 
 let txt="DX T<br>NRC 2830<br>T1"
 
-pintar(4,15,txt,"#16a34a")
-pintar(4,16,txt,"#16a34a")
+pintar(4,15,txt,"#colorDX")
+pintar(4,16,txt,"#colorDX")
 
 }
 
@@ -587,8 +613,8 @@ if(T==2){
 
 let txt="DX T<br>NRC 2832<br>T2"
 
-pintar(5,4,txt,"#16a34a")
-pintar(5,5,txt,"#16a34a")
+pintar(5,4,txt,"#colorDX")
+pintar(5,5,txt,"#colorDX")
 
 }
 
@@ -596,8 +622,8 @@ if(T==3){
 
 let txt="DX T<br>NRC 2834<br>T3"
 
-pintar(6,2,txt,"#16a34a")
-pintar(6,3,txt,"#16a34a")
+pintar(6,2,txt,"#colorDX")
+pintar(6,3,txt,"#colorDX")
 
 }
 
@@ -605,8 +631,8 @@ if(T==4){
 
 let txt="DX T<br>NRC 6679<br>T4"
 
-pintar(5,13,txt,"#16a34a")
-pintar(5,14,txt,"#16a34a")
+pintar(5,13,txt,"#colorDX")
+pintar(5,14,txt,"#colorDX")
 
 }
 
@@ -617,7 +643,7 @@ if(P=="2831"){
 let txt="DX P<br>NRC 2831<br>P1"
 
 for(let i=2;i<=7;i++){
-pintar(2,i,txt,"#16a34a")
+pintar(2,i,txt,"#colorDX")
 }
 
 }
@@ -627,7 +653,7 @@ if(P=="2833"){
 let txt="DX P<br>NRC 2833<br>P2"
 
 for(let i=2;i<=7;i++){
-pintar(3,i,txt,"#16a34a")
+pintar(3,i,txt,"#colorDX")
 }
 
 }
@@ -637,7 +663,7 @@ if(P=="2835"){
 let txt="DX P<br>NRC 2835<br>P3"
 
 for(let i=2;i<=7;i++){
-pintar(4,i,txt,"#16a34a")
+pintar(4,i,txt,"#colorDX")
 }
 
 }
@@ -648,15 +674,15 @@ let txt="DX P<br>NRC 6680<br>P4"
 
 /* Viernes */
 
-pintar(5,6,txt,"#16a34a")
-pintar(5,7,txt,"#16a34a")
-pintar(5,8,txt,"#16a34a")
+pintar(5,6,txt,"#colorDX")
+pintar(5,7,txt,"#colorDX")
+pintar(5,8,txt,"#colorDX")
 
 /* Sábado */
 
-pintar(6,6,txt,"#16a34a")
-pintar(6,7,txt,"#16a34a")
-pintar(6,8,txt,"#16a34a")
+pintar(6,6,txt,"#colorDX")
+pintar(6,7,txt,"#colorDX")
+pintar(6,8,txt,"#colorDX")
 
 }
 
@@ -712,8 +738,8 @@ if(T==1){
 
 let txt="INF T<br>NRC 2836<br>T1"
 
-pintar(1,11,txt,"#f59e0b")
-pintar(1,12,txt,"#f59e0b")
+pintar(1,11,txt,"#colorINF")
+pintar(1,12,txt,"#colorINF")
 
 }
 
@@ -725,8 +751,8 @@ if(T==2){
 
 let txt="INF T<br>NRC 2839<br>T2"
 
-pintar(1,13,txt,"#f59e0b")
-pintar(1,14,txt,"#f59e0b")
+pintar(1,13,txt,"#colorINF")
+pintar(1,14,txt,"#colorINF")
 
 }
 
@@ -738,8 +764,8 @@ if(T==3){
 
 let txt="INF T<br>NRC 2842<br>T3"
 
-pintar(1,9,txt,"#f59e0b")
-pintar(1,10,txt,"#f59e0b")
+pintar(1,9,txt,"#colorINF")
+pintar(1,10,txt,"#colorINF")
 
 }
 
@@ -751,8 +777,8 @@ if(T==4){
 
 let txt="INF T<br>NRC 2845<br>T4"
 
-pintar(3,11,txt,"#f59e0b")
-pintar(3,12,txt,"#f59e0b")
+pintar(3,11,txt,"#colorINF")
+pintar(3,12,txt,"#colorINF")
 
 }
 
@@ -766,8 +792,8 @@ if(P=="2837"){
 
 let txt="INF P<br>NRC 2837<br>P1"
 
-pintar(4,11,txt,"#f59e0b")
-pintar(4,12,txt,"#f59e0b")
+pintar(4,11,txt,"#colorINF")
+pintar(4,12,txt,"#colorINF")
 
 }
 
@@ -778,8 +804,8 @@ if(P=="2838"){
 
 let txt="INF P<br>NRC 2838<br>P1"
 
-pintar(4,13,txt,"#f59e0b")
-pintar(4,14,txt,"#f59e0b")
+pintar(4,13,txt,"#colorINF")
+pintar(4,14,txt,"#colorINF")
 
 }
 
@@ -790,8 +816,8 @@ if(P=="2840"){
 
 let txt="INF P<br>NRC 2840<br>P2"
 
-pintar(1,15,txt,"#f59e0b")
-pintar(1,16,txt,"#f59e0b")
+pintar(1,15,txt,"#colorINF")
+pintar(1,16,txt,"#colorINF")
 
 }
 
@@ -802,8 +828,8 @@ if(P=="2841"){
 
 let txt="INF P<br>NRC 2841<br>P2"
 
-pintar(4,15,txt,"#f59e0b")
-pintar(4,16,txt,"#f59e0b")
+pintar(4,15,txt,"#colorINF")
+pintar(4,16,txt,"#colorINF")
 
 }
 
@@ -814,8 +840,8 @@ if(P=="2843"){
 
 let txt="INF P<br>NRC 2843<br>P3"
 
-pintar(5,9,txt,"#f59e0b")
-pintar(5,10,txt,"#f59e0b")
+pintar(5,9,txt,"#colorINF")
+pintar(5,10,txt,"#colorINF")
 
 }
 
@@ -826,8 +852,8 @@ if(P=="2844"){
 
 let txt="INF P<br>NRC 2844<br>P3"
 
-pintar(5,11,txt,"#f59e0b")
-pintar(5,12,txt,"#f59e0b")
+pintar(5,11,txt,"#colorINF")
+pintar(5,12,txt,"#colorINF")
 
 }
 
@@ -838,8 +864,8 @@ if(P=="2846"){
 
 let txt="INF P<br>NRC 2846<br>P4"
 
-pintar(5,13,txt,"#f59e0b")
-pintar(5,14,txt,"#f59e0b")
+pintar(5,13,txt,"#colorINF")
+pintar(5,14,txt,"#colorINF")
 
 }
 
@@ -850,8 +876,8 @@ if(P=="2847"){
 
 let txt="INF P<br>NRC 2847<br>P4"
 
-pintar(5,15,txt,"#f59e0b")
-pintar(5,16,txt,"#f59e0b")
+pintar(5,15,txt,"#colorINF")
+pintar(5,16,txt,"#colorINF")
 
 }
 
@@ -870,9 +896,9 @@ let txt="FISIO<br>NRC "+nrc+"<br>MIE"
 
 /* Miércoles 6:00 - 8:40 */
 
-pintar(3,13,txt,"#ef4444")
-pintar(3,14,txt,"#ef4444")
-pintar(3,15,txt,"#ef4444")
+pintar(3,13,txt,"#colorFISIO")
+pintar(3,14,txt,"#colorFISIO")
+pintar(3,15,txt,"#colorFISIO")
 
 }
 
@@ -881,6 +907,7 @@ pintar(3,15,txt,"#ef4444")
 
 </body>
 </html>
+
 
 
 
