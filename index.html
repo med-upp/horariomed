@@ -7,11 +7,16 @@
 <title>Horario</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   
 <style>
 
-body{
+*{
 font-family:'Inter', sans-serif;
+}
+
+body{
 text-align:center;
 background:#eef2f7;
 }
@@ -156,6 +161,18 @@ font-weight:500;
 <option value="c2">2° ciclo</option>
 </select>
 
+<button onclick="exportarHorario()" style="
+padding:8px 14px;
+background:#1f3a8a;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-bottom:10px;
+">
+Exportar horario
+</button>
+   
 <div class="container">
 
 <div class="panel panel-horario">
@@ -904,11 +921,27 @@ pintar(3,15,txt,colorFISIO)
 
 }
 
+function exportarHorario(){
 
+let horario = document.getElementById("horario")
+
+html2canvas(horario).then(canvas => {
+
+let link = document.createElement("a")
+link.download = "mi_horario.png"
+link.href = canvas.toDataURL()
+
+link.click()
+
+})
+
+}
+  
 </script>
 
 </body>
 </html>
+
 
 
 
