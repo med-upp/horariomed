@@ -1,0 +1,848 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Horario</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+background:#f4f6f8;
+}
+
+.container{
+display:flex;
+justify-content:center;
+align-items:flex-start;
+gap:60px;
+width:fit-content;
+margin:auto;
+margin-top:30px;
+}
+.panel{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+width:auto;
+}
+
+.panel-horario{
+width:fit-content;
+}
+.panel-cursos{
+width:300px;
+padding:18px;
+margin:auto;
+}
+
+.panel table{
+width:100%;
+}
+
+#horario{
+border-collapse:collapse;
+margin:auto;
+width:800px;
+}
+
+th,td{
+border:1px solid #999;
+padding:6px;
+height:35px;
+font-size:12px;
+vertical-align:middle;
+}
+
+th{
+background:#184a9c;
+color:white;
+}
+
+td{
+background:#d9d9d9;
+}
+
+.panel-cursos select{
+margin:6px;
+padding:4px;
+font-size:13px;
+}
+
+.ciclo{
+display:none;
+}
+
+#horario td{
+font-weight:600;
+text-align:center;
+line-height:1.2;
+}
+
+#horario th, #horario td{
+width:149px;
+}
+
+.panel-cursos h2{
+font-size:18px;
+margin-top:18px;
+margin-bottom:8px;
+}
+
+.panel-cursos{
+font-size:14px;
+}
+
+.panel:has(.panel-cursos){
+width:fit-content;
+padding:25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Horario</h1>
+
+<h2>Seleccionar ciclo</h2>
+
+<select onchange="cambiarCiclo(this.value)">
+<option value="">Seleccionar ciclo</option>
+<option value="c6">6° ciclo</option>
+<option value="c5">5° ciclo</option>
+<option value="c4">4° ciclo</option>
+<option value="c3">3° ciclo</option>
+<option value="c2">2° ciclo</option>
+</select>
+
+<div class="container">
+
+<div class="panel panel-horario">
+<table id="horario">
+
+<tr>
+<th>Horario</th>
+<th>Lunes</th>
+<th>Martes</th>
+<th>Miércoles</th>
+<th>Jueves</th>
+<th>Viernes</th>
+<th>Sábado</th>
+</tr>
+
+<tr><th>7:00 - 7:50</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>7:55 - 8:45</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>8:50 - 9:40</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>9:45 - 10:35</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>10:40 - 11:30</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>11:35 - 12:25</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>12:30 - 1:20</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>1:25 - 2:15</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>2:20 - 3:10</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>3:15 - 4:05</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>4:10 - 5:00</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>5:05 - 5:55</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>6:00 - 6:50</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>6:55 - 7:45</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>7:50 - 8:40</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>8:45 - 9:35</th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+</table>
+
+</div>
+
+<div class="panel">
+
+<div class="ciclo c6">
+
+<div class="panel panel-cursos">
+
+<h2>Semiología</h2>
+
+<select id="T" onchange="semio()">
+<option value="">T</option>
+<option value="2829">2829 T1 (L-M-X-J-S)</option>
+</select>
+
+<select id="H" onchange="semio()">
+<option value="">H</option>
+<option value="11369">11369 H1 (L-X-V)</option>
+<option value="11370">11370 H1 (M-J-S)</option>
+</select>
+
+<select id="I" onchange="semio()">
+<option value="">I</option>
+
+<option value="11371">11371 I1 (V)</option>
+<option value="11374">11374 I1 (V)</option>
+<option value="11373">11373 I1 (V)</option>
+<option value="11372">11372 I1 (V)</option>
+
+<option value="11375">11375 I1 (L)</option>
+<option value="11376">11376 I1 (L)</option>
+<option value="11377">11377 I1 (L)</option>
+
+</select>
+
+<h2>Médico Paciente</h2>
+
+<select id="mpA" onchange="actualizarMP()">
+
+<option value="">A</option>
+
+<option value="1">10832 A1 (M)</option>
+<option value="2">10839 A2 (M)</option>
+<option value="3">10944 A3 (M)</option>
+<option value="4">10951 A4 (M)</option>
+<option value="5">10958 A5 (M)</option>
+<option value="6">10965 A6 (M)</option>
+
+</select>
+
+<select id="mpI" onchange="mp()"></select>
+
+<h2>Diagnóstico por Imágenes</h2>
+
+<select id="dxT" onchange="actualizarDX()">
+
+<option value="">T</option>
+
+<option value="1">2830 T1 (J)</option>
+<option value="2">2832 T2 (V)</option>
+<option value="3">2834 T3 (S)</option>
+<option value="4">6679 T4 (V)</option>
+
+</select>
+
+<select id="dxP" onchange="dx()"></select>
+
+<h2>Informática Médica</h2>
+
+<select id="infT" onchange="actualizarINF()">
+
+<option value="">T</option>
+
+<option value="1">2836 T1 (L)</option>
+<option value="2">2839 T2 (L)</option>
+<option value="3">2842 T3 (L)</option>
+<option value="4">2845 T4 (M)</option>
+
+</select>
+
+<select id="infP" onchange="inf()"></select>
+
+<h2>Fisiopatología</h2>
+
+<select id="fisio" onchange="fisio()">
+
+<option value="">NRC</option>
+
+<option value="2848">2848 (MIE)</option>
+<option value="2849">2849 (MIE)</option>
+<option value="2850">2850 (MIE)</option>
+<option value="2851">2851 (MIE)</option>
+<option value="8758">8758 (MIE)</option>
+<option value="9189">9189 (MIE)</option>
+<option value="9190">9190 (MIE)</option>
+
+</select>
+
+</div>
+
+</div>
+
+<script>
+
+function cambiarCiclo(ciclo){
+
+let ciclos = document.querySelectorAll(".ciclo")
+
+/* ocultar todos */
+
+for(let i=0;i<ciclos.length;i++){
+ciclos[i].style.display="none"
+}
+
+/* mostrar el ciclo elegido */
+
+if(ciclo!=""){
+let mostrar = document.querySelector(".ciclo."+ciclo)
+if(mostrar){
+mostrar.style.display="block"
+}
+}
+
+}
+function pintar(dia,fila,texto,color){
+
+let tabla=document.getElementById("horario")
+let celda=tabla.rows[fila].cells[dia]
+
+/* si la celda ya tiene algo hay choque */
+
+if(celda.innerHTML!=""){
+
+let cursoExistente = celda.innerHTML
+
+celda.innerHTML = cursoExistente + "<br>⚠️<br>" + texto
+
+celda.style.background = "#ef4444"
+celda.style.color = "white"
+
+return
+}
+
+/* pintar normal */
+
+celda.innerHTML=texto
+celda.style.background=color
+celda.style.color="white"
+
+}
+
+function limpiar(tipo){
+
+let tabla=document.getElementById("horario")
+
+for(let i=1;i<tabla.rows.length;i++){
+for(let j=1;j<7;j++){
+
+let c=tabla.rows[i].cells[j]
+
+if(c.innerHTML.includes(tipo)){
+
+let partes=c.innerHTML.split("<br>⚠️<br>")
+
+if(partes.length>1){
+
+let filtrado=partes.filter(p=>!p.includes(tipo))
+
+c.innerHTML=filtrado.join("<br>⚠️<br>")
+
+if(filtrado.length==1){
+
+/* recuperar color del curso que quedó */
+
+if(c.innerHTML.includes("SEMIO")) c.style.background="#233d91"
+else if(c.innerHTML.includes("DX")) c.style.background="#16a34a"
+else if(c.innerHTML.includes("MP")) c.style.background="#8b5cf6"
+else if(c.innerHTML.includes("INF")) c.style.background="#f59e0b"
+else if(c.innerHTML.includes("FISIO")) c.style.background="#ef4444"
+
+c.style.color="white"
+
+}
+
+}else{
+
+c.innerHTML=""
+c.style.background="#d9d9d9"
+c.style.color="black"
+
+}
+
+}
+
+}
+}
+
+}
+
+function semio(){
+
+let T=document.getElementById("T").value
+let H=document.getElementById("H").value
+let I=document.getElementById("I").value
+
+limpiar("SEMIO T")
+limpiar("SEMIO H")
+limpiar("SEMIO I")
+
+if(T){
+
+let txt="SEMIO T<br>NRC 2829<br>T1"
+
+pintar(1,8,txt,"#233d91")
+pintar(2,10,txt,"#233d91")
+pintar(3,10,txt,"#233d91")
+pintar(4,10,txt,"#233d91")
+pintar(6,10,txt,"#233d91")
+
+}
+
+if(H=="11369"){
+
+let txt="SEMIO H<br>NRC 11369<br>H1"
+
+pintar(1,2,txt,"#2f66d0")
+pintar(1,3,txt,"#2f66d0")
+pintar(1,4,txt,"#2f66d0")
+pintar(1,5,txt,"#2f66d0")
+
+pintar(3,2,txt,"#2f66d0")
+pintar(3,3,txt,"#2f66d0")
+pintar(3,4,txt,"#2f66d0")
+pintar(3,5,txt,"#2f66d0")
+
+pintar(5,2,txt,"#2f66d0")
+pintar(5,3,txt,"#2f66d0")
+pintar(5,4,txt,"#2f66d0")
+pintar(5,5,txt,"#2f66d0")
+
+}
+
+if(H=="11370"){
+
+let txt="SEMIO H<br>NRC 11370<br>H1"
+
+pintar(2,2,txt,"#2f66d0")
+pintar(2,3,txt,"#2f66d0")
+pintar(2,4,txt,"#2f66d0")
+pintar(2,5,txt,"#2f66d0")
+
+pintar(4,2,txt,"#2f66d0")
+pintar(4,3,txt,"#2f66d0")
+pintar(4,4,txt,"#2f66d0")
+pintar(4,5,txt,"#2f66d0")
+
+pintar(6,2,txt,"#2f66d0")
+pintar(6,3,txt,"#2f66d0")
+pintar(6,4,txt,"#2f66d0")
+pintar(6,5,txt,"#2f66d0")
+
+}
+
+if(I=="11371")pintar(5,9,"SEMIO I<br>NRC 11371<br>I1","#1fa0d6")
+if(I=="11374")pintar(5,11,"SEMIO I<br>NRC 11374<br>I1","#1fa0d6")
+if(I=="11373")pintar(5,13,"SEMIO I<br>NRC 11373<br>I1","#1fa0d6")
+if(I=="11372")pintar(5,15,"SEMIO I<br>NRC 11372<br>I1","#1fa0d6")
+
+if(I=="11375")pintar(1,11,"SEMIO I<br>NRC 11375<br>I1","#1fa0d6")
+if(I=="11376")pintar(1,13,"SEMIO I<br>NRC 11376<br>I1","#1fa0d6")
+if(I=="11377")pintar(1,15,"SEMIO I<br>NRC 11377<br>I1","#1fa0d6")
+
+}
+
+function actualizarMP(){
+
+let A=document.getElementById("mpA").value
+let select=document.getElementById("mpI")
+
+select.innerHTML=""
+
+let datos={
+1:["10833","10834","10835","10836","10837","10838"],
+2:["10840","10841","10842","10843","10942","10943"],
+3:["10945","10946","10947","10948","10949","10950"],
+4:["10952","10953","10954","10955","10956","10957"],
+5:["10959","10960","10961","10962","10963","10964"],
+6:["10966","10967","10968"]
+}
+
+datos[A]?.forEach(nrc=>{
+let op=document.createElement("option")
+op.value=nrc
+op.text=nrc+" I"+A+" (J)"
+select.appendChild(op)
+})
+
+mp()
+
+}
+
+function mp(){
+
+limpiar("MP")
+
+let A=document.getElementById("mpA").value
+let I=document.getElementById("mpI").value
+
+if(!A)return
+
+let texto="MP A<br>A"+A
+
+if(A<=3){
+
+[11,12,13].forEach(b=>{
+pintar(2,b,texto,"#8b5cf6")
+})
+
+}else{
+
+[14,15,16].forEach(b=>{
+pintar(2,b,texto,"#8b5cf6")
+})
+
+}
+
+let fila={
+10833:11,10834:12,10835:13,10836:14,10837:15,10838:16,
+10840:11,10841:12,10842:13,10843:14,10942:15,10943:16,
+10945:11,10946:12,10947:13,10948:14,10949:15,10950:16,
+10952:11,10953:12,10954:13,10955:14,10956:15,10957:16,
+10959:11,10960:12,10961:13,10962:14,10963:15,10964:16,
+10966:11,10967:12,10968:13
+}
+
+if(I){
+let texto2="MP I<br>NRC "+I+"<br>I"+A
+pintar(4,fila[I],texto2,"#a855f7")
+}
+
+}
+
+function actualizarDX(){
+
+let T=document.getElementById("dxT").value
+let select=document.getElementById("dxP")
+
+select.innerHTML=""
+
+let datos={
+1:["2831"],
+2:["2833"],
+3:["2835"],
+4:["6680"]
+}
+
+datos[T]?.forEach(nrc=>{
+
+let op=document.createElement("option")
+
+op.value=nrc
+op.text=nrc+" P"+T
+
+select.appendChild(op)
+
+})
+
+dx()
+
+}
+
+
+function dx(){
+
+limpiar("DX")
+
+let T=document.getElementById("dxT").value
+let P=document.getElementById("dxP").value
+
+if(!T)return
+
+
+/* TEORIA */
+
+if(T==1){
+
+let txt="DX T<br>NRC 2830<br>T1"
+
+pintar(4,15,txt,"#16a34a")
+pintar(4,16,txt,"#16a34a")
+
+}
+
+if(T==2){
+
+let txt="DX T<br>NRC 2832<br>T2"
+
+pintar(5,4,txt,"#16a34a")
+pintar(5,5,txt,"#16a34a")
+
+}
+
+if(T==3){
+
+let txt="DX T<br>NRC 2834<br>T3"
+
+pintar(6,2,txt,"#16a34a")
+pintar(6,3,txt,"#16a34a")
+
+}
+
+if(T==4){
+
+let txt="DX T<br>NRC 6679<br>T4"
+
+pintar(5,13,txt,"#16a34a")
+pintar(5,14,txt,"#16a34a")
+
+}
+
+/* PRACTICAS */
+
+if(P=="2831"){
+
+let txt="DX P<br>NRC 2831<br>P1"
+
+for(let i=2;i<=7;i++){
+pintar(2,i,txt,"#22c55e")
+}
+
+}
+
+if(P=="2833"){
+
+let txt="DX P<br>NRC 2833<br>P2"
+
+for(let i=2;i<=7;i++){
+pintar(3,i,txt,"#22c55e")
+}
+
+}
+
+if(P=="2835"){
+
+let txt="DX P<br>NRC 2835<br>P3"
+
+for(let i=2;i<=7;i++){
+pintar(4,i,txt,"#22c55e")
+}
+
+}
+
+if(P=="6680"){
+
+let txt="DX P<br>NRC 6680<br>P4"
+
+/* Viernes */
+
+pintar(5,6,txt,"#22c55e")
+pintar(5,7,txt,"#22c55e")
+pintar(5,8,txt,"#22c55e")
+
+/* Sábado */
+
+pintar(6,6,txt,"#22c55e")
+pintar(6,7,txt,"#22c55e")
+pintar(6,8,txt,"#22c55e")
+
+}
+
+}
+
+function actualizarINF(){
+
+let T=document.getElementById("infT").value
+let select=document.getElementById("infP")
+
+select.innerHTML=""
+
+let datos={
+
+1:["2837","2838"],
+2:["2840","2841"],
+3:["2843","2844"],
+4:["2846","2847"]
+
+}
+
+datos[T]?.forEach(nrc=>{
+
+let op=document.createElement("option")
+
+op.value=nrc
+op.text=nrc+" P"+T
+
+select.appendChild(op)
+
+})
+
+inf()
+
+}
+
+function inf(){
+
+limpiar("INF")
+
+let T=document.getElementById("infT").value
+let P=document.getElementById("infP").value
+
+if(!T)return
+
+
+/* TEORIAS */
+
+/* T1 — NRC 2836
+Lunes 4:10 - 5:55 */
+
+if(T==1){
+
+let txt="INF T<br>NRC 2836<br>T1"
+
+pintar(1,11,txt,"#f59e0b")
+pintar(1,12,txt,"#f59e0b")
+
+}
+
+
+/* T2 — NRC 2839
+Lunes 6:00 - 7:45 */
+
+if(T==2){
+
+let txt="INF T<br>NRC 2839<br>T2"
+
+pintar(1,13,txt,"#f59e0b")
+pintar(1,14,txt,"#f59e0b")
+
+}
+
+
+/* T3 — NRC 2842
+Lunes 2:20 - 4:05 */
+
+if(T==3){
+
+let txt="INF T<br>NRC 2842<br>T3"
+
+pintar(1,9,txt,"#f59e0b")
+pintar(1,10,txt,"#f59e0b")
+
+}
+
+
+/* T4 — NRC 2845
+Miércoles 4:10 - 5:55 */
+
+if(T==4){
+
+let txt="INF T<br>NRC 2845<br>T4"
+
+pintar(3,11,txt,"#f59e0b")
+pintar(3,12,txt,"#f59e0b")
+
+}
+
+
+
+/* PRACTICAS */
+
+/* 2837 — Jueves 4:10 - 5:55 */
+
+if(P=="2837"){
+
+let txt="INF P<br>NRC 2837<br>P1"
+
+pintar(4,11,txt,"#fbbf24")
+pintar(4,12,txt,"#fbbf24")
+
+}
+
+
+/* 2838 — Jueves 6:00 - 7:45 */
+
+if(P=="2838"){
+
+let txt="INF P<br>NRC 2838<br>P1"
+
+pintar(4,13,txt,"#fbbf24")
+pintar(4,14,txt,"#fbbf24")
+
+}
+
+
+/* 2840 — Lunes 7:50 - 9:35 */
+
+if(P=="2840"){
+
+let txt="INF P<br>NRC 2840<br>P2"
+
+pintar(1,15,txt,"#fbbf24")
+pintar(1,16,txt,"#fbbf24")
+
+}
+
+
+/* 2841 — Jueves 7:50 - 9:35 */
+
+if(P=="2841"){
+
+let txt="INF P<br>NRC 2841<br>P2"
+
+pintar(4,15,txt,"#fbbf24")
+pintar(4,16,txt,"#fbbf24")
+
+}
+
+
+/* 2843 — Viernes 2:20 - 4:05 */
+
+if(P=="2843"){
+
+let txt="INF P<br>NRC 2843<br>P3"
+
+pintar(5,9,txt,"#fbbf24")
+pintar(5,10,txt,"#fbbf24")
+
+}
+
+
+/* 2844 — Viernes 4:10 - 5:55 */
+
+if(P=="2844"){
+
+let txt="INF P<br>NRC 2844<br>P3"
+
+pintar(5,11,txt,"#fbbf24")
+pintar(5,12,txt,"#fbbf24")
+
+}
+
+
+/* 2846 — Viernes 6:00 - 7:45 */
+
+if(P=="2846"){
+
+let txt="INF P<br>NRC 2846<br>P4"
+
+pintar(5,13,txt,"#fbbf24")
+pintar(5,14,txt,"#fbbf24")
+
+}
+
+
+/* 2847 — Viernes 7:50 - 9:35 */
+
+if(P=="2847"){
+
+let txt="INF P<br>NRC 2847<br>P4"
+
+pintar(5,15,txt,"#fbbf24")
+pintar(5,16,txt,"#fbbf24")
+
+}
+
+/* cerramos la función inf */
+}
+
+function fisio(){
+
+limpiar("FISIO")
+
+let nrc=document.getElementById("fisio").value
+
+if(!nrc)return
+
+let txt="FISIO<br>NRC "+nrc+"<br>MIE"
+
+/* Miércoles 6:00 - 8:40 */
+
+pintar(3,13,txt,"#ef4444")
+pintar(3,14,txt,"#ef4444")
+pintar(3,15,txt,"#ef4444")
+
+}
+
+
+</script>
+
+</body>
+</html>
