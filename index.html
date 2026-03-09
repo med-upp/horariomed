@@ -141,6 +141,10 @@ letter-spacing:0.5px;
 h2{
 font-weight:500;
 }
+
+#horario td{
+font-size:11px;
+}
   
 </style>
 
@@ -314,6 +318,8 @@ Exportar horario
 <option value="9190">9190 (MIE)</option>
 
 </select>
+
+</div>
 
 </div>
 
@@ -923,7 +929,7 @@ pintar(3,15,txt,colorFISIO)
 
 function exportarHorario(){
 
-let horario = document.getElementById("horario")
+let horario = document.querySelector(".panel-horario")
 
 html2canvas(horario).then(canvas => {
 
@@ -941,11 +947,6 @@ link.click()
 
 </body>
 </html>
-
-
-
-
-
 
 
 
