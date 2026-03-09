@@ -302,6 +302,8 @@ font-weight:500;
 
 </div>
 
+</div>
+  
 <script>
 
   let colorSemio = "#6b8cff"
@@ -390,11 +392,11 @@ if(filtrado.length==1){
 
 /* recuperar color del curso que quedó */
 
-if(c.innerHTML.includes("SEMIO")) c.style.background="#233d91"
-else if(c.innerHTML.includes("DX")) c.style.background="#16a34a"
-else if(c.innerHTML.includes("MP")) c.style.background="#8b5cf6"
-else if(c.innerHTML.includes("INF")) c.style.background="#f59e0b"
-else if(c.innerHTML.includes("FISIO")) c.style.background="#ef4444"
+if(c.innerHTML.includes("SEMIO")) c.style.background=colorSemio
+else if(c.innerHTML.includes("DX")) c.style.background=colorDX
+else if(c.innerHTML.includes("MP")) c.style.background=colorMP
+else if(c.innerHTML.includes("INF")) c.style.background=colorINF
+else if(c.innerHTML.includes("FISIO")) c.style.background=colorFISIO
 
 c.style.color="white"
 
@@ -403,7 +405,7 @@ c.style.color="white"
 }else{
 
 c.innerHTML=""
-c.style.background="#d9d9d9"
+c.style.background="#f3f4f6"
 c.style.color="black"
 
 }
@@ -431,7 +433,7 @@ let txt="SEMIO T<br>NRC 2829<br>T1"
 
 pintar(1,8,txt,colorSemio)
 pintar(2,10,txt,colorSemio)
-pintar(3,10,txt,colorSemio")
+pintar(3,10,txt,colorSemio)
 pintar(4,10,txt,colorSemio)
 pintar(6,10,txt,colorSemio)
 
@@ -907,6 +909,7 @@ pintar(3,15,txt,colorFISIO)
 
 </body>
 </html>
+
 
 
 
