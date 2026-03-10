@@ -164,6 +164,7 @@ text-align:left;
 .footer-right{
 text-align:right;
 }
+
   
 </style>
 
@@ -233,6 +234,116 @@ Exportar horario
 </div>
 
 <div class="panel">
+
+<div class="ciclo c3">
+
+<div class="panel panel-cursos">
+
+<h2>Sistema Nervioso</h2>
+
+<input type="color" value="#fb7185" onchange="cambiarColor('sn',this.value)">
+
+<select id="snT" onchange="actualizarSN()">
+
+<option value="">T</option>
+
+<option value="1">2706 T1 (L)</option>
+<option value="2">2707 T2 (M)</option>
+<option value="3">2708 T3 (X)</option>
+<option value="4">2709 T4 (J)</option>
+<option value="5">6931 T5 (M)</option>
+<option value="6">6932 T6 (M)</option>
+<option value="7">6933 T7 (X)</option>
+<option value="8">6934 T8 (J)</option>
+<option value="9">6935 T9 (L)</option>
+<option value="0">6936 T0 (L)</option>
+
+</select>
+
+<select id="snL" onchange="sn()">
+<option value="">L</option>
+</select>
+
+<select id="snA" onchange="sn()">
+<option value="">A</option>
+</select>
+
+<h2>Sistema Reproductor</h2>
+
+<input type="color" value="#f472b6" onchange="cambiarColor('sr',this.value)">
+
+<select id="srT" onchange="actualizarSR()">
+
+<option value="">T</option>
+
+<option value="1">2698 T1</option>
+<option value="2">2699 T2</option>
+<option value="3">2700 T3</option>
+<option value="4">2701 T4</option>
+<option value="5">6937 T5</option>
+<option value="6">6938 T6</option>
+<option value="7">6939 T7</option>
+<option value="8">6940 T8</option>
+<option value="9">8634 T9</option>
+<option value="10">12216 T0</option>
+<option value="11">12219 1T</option>
+</select>
+
+<select id="srL" onchange="sr()">
+<option value="">L</option>
+</select>
+
+<select id="srA" onchange="sr()">
+<option value="">A</option>
+</select>
+
+<h2>Sistema Endocrino</h2>
+
+<input type="color" value="#34d399" onchange="cambiarColor('se',this.value)">
+
+<select id="seT" onchange="actualizarSE()">
+
+<option value="">T</option>
+
+<option value="1">2702 T1 (J)</option>
+<option value="2">2703 T2 (J)</option>
+<option value="3">2704 T3 (L)</option>
+<option value="4">2705 T4 (L)</option>
+<option value="5">6917 T5 (L)</option>
+<option value="6">6918 T6 (L)</option>
+<option value="7">6919 T7 (L)</option>
+<option value="8">6920 T8 (L)</option>
+<option value="9">6921 T9 (X)</option>
+
+</select>
+
+<select id="seL" onchange="se()">
+<option value="">L</option>
+</select>
+
+<select id="seA" onchange="se()">
+<option value="">A</option>
+</select>
+
+<h2>Casos Integradores II</h2>
+
+<input type="color" value="#f97316" onchange="cambiarColor('c2',this.value)">
+
+<select id="c2" onchange="c2()">
+
+<option value="">NRC</option>
+
+<option value="2680">2680 M01 (V)</option>
+<option value="2681">2681 M02 (V)</option>
+<option value="2682">2682 M03 (V)</option>
+<option value="2683">2683 M04 (S)</option>
+<option value="2684">2684 M05 (S)</option>
+<option value="2685">2685 M06 (S)</option>
+
+</select>
+
+</div>
+</div>
 
 <div class="ciclo c6">
 
@@ -370,11 +481,15 @@ Instagram: @isaarg_fg
   
 <script>
 
-  let colorSemio = "#6b8cff"
+let colorSemio = "#6b8cff"
 let colorMP = "#a78bfa"
 let colorDX = "#4ade80"
 let colorINF = "#fbbf24"
 let colorFISIO = "#38bdf8"
+let colorSN = "#fb7185"
+let colorSR = "#f472b6"
+let colorSE = "#34d399"
+let colorC2 = "#f97316"
 
 function cambiarColor(curso,color){
 
@@ -383,29 +498,53 @@ if(curso=="mp") colorMP=color
 if(curso=="dx") colorDX=color
 if(curso=="inf") colorINF=color
 if(curso=="fisio") colorFISIO=color
+if(curso=="sn") colorSN=color
+if(curso=="sr") colorSR=color
+if(curso=="se") colorSE=color
+if(curso=="c2") colorC2=color
 
 }
 
 function cambiarCiclo(ciclo){
 
-let ciclos = document.querySelectorAll(".ciclo")
+/* limpiar horario */
 
-/* ocultar todos */
+let tabla=document.getElementById("horario")
 
-for(let i=0;i<ciclos.length;i++){
-ciclos[i].style.display="none"
+for(let i=1;i<tabla.rows.length;i++){
+for(let j=1;j<7;j++){
+
+let c=tabla.rows[i].cells[j]
+
+c.innerHTML=""
+c.style.background="#f3f4f6"
+c.style.color="black"
+
+}
 }
 
-/* mostrar el ciclo elegido */
+/* ocultar todos los ciclos */
+
+let ciclos=document.querySelectorAll(".ciclo")
+
+ciclos.forEach(c=>{
+c.style.display="none"
+})
+
+/* mostrar ciclo elegido */
 
 if(ciclo!=""){
-let mostrar = document.querySelector(".ciclo."+ciclo)
-if(mostrar){
-mostrar.style.display="block"
-}
+
+let panel=document.querySelector(".ciclo."+ciclo)
+
+if(panel){
+panel.style.display="block"
 }
 
 }
+
+}
+
 function pintar(dia,fila,texto,color){
 
 let tabla=document.getElementById("horario")
@@ -454,13 +593,16 @@ c.innerHTML=filtrado.join("<br>⚠️<br>")
 
 if(filtrado.length==1){
 
-/* recuperar color del curso que quedó */
 
 if(c.innerHTML.includes("SEMIO")) c.style.background=colorSemio
 else if(c.innerHTML.includes("DX")) c.style.background=colorDX
 else if(c.innerHTML.includes("MP")) c.style.background=colorMP
 else if(c.innerHTML.includes("INF")) c.style.background=colorINF
 else if(c.innerHTML.includes("FISIO")) c.style.background=colorFISIO
+else if(c.innerHTML.includes("SN")) c.style.background=colorSN
+else if(c.innerHTML.includes("SR")) c.style.background=colorSR
+else if(c.innerHTML.includes("SE")) c.style.background=colorSE
+else if(c.innerHTML.includes("C2")) c.style.background=colorC2
 
 c.style.color="white"
 
@@ -849,11 +991,6 @@ pintar(3,12,txt,colorINF)
 }
 
 
-
-/* PRACTICAS */
-
-/* 2837 — Jueves 4:10 - 5:55 */
-
 if(P=="2837"){
 
 let txt="INF P<br>NRC 2837<br>P1"
@@ -863,8 +1000,6 @@ pintar(4,12,txt,colorINF)
 
 }
 
-
-/* 2838 — Jueves 6:00 - 7:45 */
 
 if(P=="2838"){
 
@@ -968,6 +1103,680 @@ pintar(3,15,txt,colorFISIO)
 
 }
 
+function actualizarSN(){
+
+let T=document.getElementById("snT").value
+let L=document.getElementById("snL")
+let A=document.getElementById("snA")
+
+L.innerHTML="<option value=''>L</option>"
+A.innerHTML="<option value=''>A</option>"
+
+let datos={
+
+1:{L:"10572",A:"10571"},
+2:{L:"10574",A:"10573"},
+3:{L:"10576",A:"10575"},
+4:{L:"10578",A:"10577"},
+5:{L:"10580",A:"10579"},
+6:{L:"10582",A:"10581"},
+7:{L:"10584",A:"10583"},
+8:{L:"10586",A:"10585"},
+9:{L:"10588",A:"10587"},
+0:{L:"10590",A:"10589"}
+
+}
+
+if(!datos[T])return
+
+let opL=document.createElement("option")
+opL.value=datos[T].L
+opL.text=datos[T].L+" L"+T
+L.appendChild(opL)
+
+let opA=document.createElement("option")
+opA.value=datos[T].A
+opA.text=datos[T].A+" A"+T
+A.appendChild(opA)
+
+sn()
+
+}
+
+function sn(){
+
+limpiar("SN")
+
+let T=document.getElementById("snT").value
+let L=document.getElementById("snL").value
+let A=document.getElementById("snA").value
+
+if(!T)return
+
+let nrcT={
+1:"2706",
+2:"2707",
+3:"2708",
+4:"2709",
+5:"6931",
+6:"6932",
+7:"6933",
+8:"6934",
+9:"6935",
+0:"6936"
+}
+
+let nrcL={
+1:"10572",
+2:"10574",
+3:"10576",
+4:"10578",
+5:"10580",
+6:"10582",
+7:"10584",
+8:"10586",
+9:"10588",
+0:"10590"
+}
+
+let nrcA={
+1:"10571",
+2:"10573",
+3:"10575",
+4:"10577",
+5:"10579",
+6:"10581",
+7:"10583",
+8:"10585",
+9:"10587",
+0:"10589"
+}
+
+let txtT="SN T<br>NRC "+nrcT[T]+"<br>T"+T
+let txtL="SN L<br>NRC "+nrcL[T]+"<br>L"+T
+let txtA="SN A<br>NRC "+nrcA[T]+"<br>A"+T
+
+if(T==1){
+pintar(1,1,txtT,colorSN)
+pintar(1,2,txtT,colorSN)
+pintar(1,3,txtT,colorSN)
+}
+
+if(T==2){
+pintar(2,1,txtT,colorSN)
+pintar(2,2,txtT,colorSN)
+pintar(2,3,txtT,colorSN)
+}
+
+if(T==3){
+pintar(3,1,txtT,colorSN)
+pintar(3,2,txtT,colorSN)
+pintar(3,3,txtT,colorSN)
+}
+
+if(T==4){
+pintar(4,1,txtT,colorSN)
+pintar(4,2,txtT,colorSN)
+pintar(4,3,txtT,colorSN)
+}
+
+if(T==5){
+pintar(2,9,txtT,colorSN)
+pintar(2,10,txtT,colorSN)
+pintar(2,11,txtT,colorSN)
+}
+
+if(T==6){
+pintar(2,12,txtT,colorSN)
+pintar(2,13,txtT,colorSN)
+pintar(2,14,txtT,colorSN)
+}
+
+if(T==7){
+pintar(3,4,txtT,colorSN)
+pintar(3,5,txtT,colorSN)
+pintar(3,6,txtT,colorSN)
+}
+
+if(T==8){
+pintar(4,4,txtT,colorSN)
+pintar(4,5,txtT,colorSN)
+pintar(4,6,txtT,colorSN)
+}
+
+if(T==9){
+pintar(1,9,txtT,colorSN)
+pintar(1,10,txtT,colorSN)
+pintar(1,11,txtT,colorSN)
+}
+
+if(T==0){
+pintar(1,12,txtT,colorSN)
+pintar(1,13,txtT,colorSN)
+pintar(1,14,txtT,colorSN)
+}
+
+/* ---------- LABORATORIOS ---------- */
+
+if(L=="10572"){ for(let i=9;i<=12;i++) pintar(2,i,txtL,colorSN) }
+
+if(L=="10574"){ for(let i=1;i<=4;i++) pintar(3,i,txtL,colorSN) }
+
+if(L=="10576"){ for(let i=9;i<=12;i++) pintar(6,i,txtL,colorSN) }
+
+if(L=="10578"){ for(let i=9;i<=12;i++) pintar(5,i,txtL,colorSN) }
+
+if(L=="10580"){ for(let i=5;i<=9;i++) pintar(3,i,txtL,colorSN) }
+
+if(L=="10582"){ for(let i=13;i<=16;i++) pintar(3,i,txtL,colorSN) }
+
+if(L=="10584"){ for(let i=13;i<=16;i++) pintar(6,i,txtL,colorSN) }
+
+if(L=="10586"){ for(let i=13;i<=16;i++) pintar(5,i,txtL,colorSN) }
+
+if(L=="10588"){ for(let i=9;i<=12;i++) pintar(3,i,txtL,colorSN) }
+
+if(L=="10590"){ for(let i=13;i<=16;i++) pintar(2,i,txtL,colorSN) }
+
+/* ---------- ACTIVIDADES ---------- */
+
+if(A=="10571"){
+pintar(3,8,txtA,colorSN)
+pintar(3,9,txtA,colorSN)
+}
+
+if(A=="10573"){
+pintar(3,9,txtA,colorSN)
+pintar(3,10,txtA,colorSN)
+}
+
+if(A=="10575"){
+pintar(4,8,txtA,colorSN)
+pintar(4,9,txtA,colorSN)
+}
+
+if(A=="10577"){
+pintar(6,11,txtA,colorSN)
+pintar(6,12,txtA,colorSN)
+}
+
+if(A=="10579"){
+pintar(5,8,txtA,colorSN)
+pintar(5,9,txtA,colorSN)
+}
+
+if(A=="10581"){
+pintar(5,9,txtA,colorSN)
+pintar(5,10,txtA,colorSN)
+}
+
+if(A=="10583"){
+pintar(6,8,txtA,colorSN)
+pintar(6,9,txtA,colorSN)
+}
+
+if(A=="10585"){
+pintar(6,9,txtA,colorSN)
+pintar(6,10,txtA,colorSN)
+}
+
+if(A=="10587"){
+pintar(6,13,txtA,colorSN)
+pintar(6,14,txtA,colorSN)
+}
+
+if(A=="10589"){
+pintar(4,9,txtA,colorSN)
+pintar(4,10,txtA,colorSN)
+}
+
+}
+
+function actualizarSR(){
+
+let T=document.getElementById("srT").value
+let L=document.getElementById("srL")
+let A=document.getElementById("srA")
+
+L.innerHTML="<option value=''>L</option>"
+A.innerHTML="<option value=''>A</option>"
+
+let datos={
+
+1:{L:"10592",A:"10591"},
+2:{L:"10594",A:"10593"},
+3:{L:"10596",A:"10595"},
+4:{L:"10598",A:"10597"},
+5:{L:"10600",A:"10599"},
+6:{L:"10602",A:"10601"},
+7:{L:"10604",A:"10603"},
+8:{L:"10606",A:"10605"},
+9:{L:"10608",A:"10607"},
+10:{L:"12218",A:"12217"},
+11:{L:"12221",A:"12220"}
+
+}
+
+if(!datos[T]) return
+
+let opL=document.createElement("option")
+opL.value=datos[T].L
+opL.text=datos[T].L+" L"+T
+L.appendChild(opL)
+
+let opA=document.createElement("option")
+opA.value=datos[T].A
+opA.text=datos[T].A+" A"+T
+A.appendChild(opA)
+
+sr()
+
+}
+
+function sr(){
+
+limpiar("SR")
+
+let T=document.getElementById("srT").value
+let L=document.getElementById("srL").value
+let A=document.getElementById("srA").value
+
+if(!T)return
+
+let nrcT={
+1:"2698",
+2:"2699",
+3:"2700",
+4:"2701",
+5:"6937",
+6:"6938",
+7:"6939",
+8:"6940",
+9:"8634",
+10:"12216",
+11:"12219"
+}
+
+let etiqueta = (T==10?"T0":(T==11?"1T":"T"+T))
+
+let txtT="SR T<br>NRC "+nrcT[T]+"<br>"+etiqueta
+
+
+/* ---------------- TEORIAS ---------------- */
+
+/* Lunes */
+if(T==1){
+pintar(1,13,txtT,colorSR)
+pintar(1,14,txtT,colorSR)
+}
+
+if(T==2){
+pintar(1,15,txtT,colorSR)
+pintar(1,16,txtT,colorSR)
+}
+
+/* Martes */
+
+if(T==3){
+pintar(2,13,txtT,colorSR)
+pintar(2,14,txtT,colorSR)
+}
+
+if(T==4){
+pintar(2,15,txtT,colorSR)
+pintar(2,16,txtT,colorSR)
+}
+
+/* Lunes tarde */
+
+if(T==5){
+pintar(1,9,txtT,colorSR)
+pintar(1,10,txtT,colorSR)
+}
+
+if(T==6){
+pintar(1,11,txtT,colorSR)
+pintar(1,12,txtT,colorSR)
+}
+
+/* Miércoles */
+
+if(T==7){
+pintar(1,9,txtT,colorSR)
+pintar(1,10,txtT,colorSR)
+}
+
+if(T==8){
+pintar(3,9,txtT,colorSR)
+pintar(3,10,txtT,colorSR)
+}
+
+if(T==9){
+pintar(3,13,txtT,colorSR)
+pintar(3,14,txtT,colorSR)
+}
+
+if(T==10){
+pintar(3,11,txtT,colorSR)
+pintar(3,12,txtT,colorSR)
+}
+
+if(T==11){
+pintar(3,11,txtT,colorSR)
+pintar(3,12,txtT,colorSR)
+}
+
+
+/* ---------------- LABORATORIOS ---------------- */
+
+if(L=="10592"){
+pintar(4,9,"SR L<br>NRC 10592<br>L1",colorSR)
+pintar(4,10,"SR L<br>NRC 10592<br>L1",colorSR)
+}
+
+if(L=="10594"){
+pintar(4,11,"SR L<br>NRC 10594<br>L2",colorSR)
+pintar(4,12,"SR L<br>NRC 10594<br>L2",colorSR)
+}
+
+if(L=="10596"){
+pintar(4,13,"SR L<br>NRC 10596<br>L3",colorSR)
+pintar(4,14,"SR L<br>NRC 10596<br>L3",colorSR)
+}
+
+if(L=="10598"){
+pintar(4,15,"SR L<br>NRC 10598<br>L4",colorSR)
+pintar(4,16,"SR L<br>NRC 10598<br>L4",colorSR)
+}
+
+if(L=="10602"){
+pintar(5,9,"SR L<br>NRC 10602<br>L6",colorSR)
+pintar(5,10,"SR L<br>NRC 10602<br>L6",colorSR)
+}
+
+if(L=="10600"){
+pintar(5,11,"SR L<br>NRC 10600<br>L5",colorSR)
+pintar(5,12,"SR L<br>NRC 10600<br>L5",colorSR)
+}
+
+if(L=="10604"){
+pintar(5,13,"SR L<br>NRC 10604<br>L7",colorSR)
+pintar(5,14,"SR L<br>NRC 10604<br>L7",colorSR)
+}
+
+if(L=="10606"){
+pintar(6,9,"SR L<br>NRC 10606<br>L8",colorSR)
+pintar(6,10,"SR L<br>NRC 10606<br>L8",colorSR)
+}
+
+if(L=="12218"){
+pintar(6,11,"SR L<br>NRC 12218<br>L0",colorSR)
+pintar(6,12,"SR L<br>NRC 12218<br>L0",colorSR)
+}
+
+if(L=="10608"){
+pintar(6,13,"SR L<br>NRC 10608<br>L9",colorSR)
+pintar(6,14,"SR L<br>NRC 10608<br>L9",colorSR)
+}
+
+if(L=="12221"){
+pintar(6,15,"SR L<br>NRC 12221<br>1L",colorSR)
+pintar(6,16,"SR L<br>NRC 12221<br>1L",colorSR)
+}
+
+
+/* ---------------- ACTIVIDADES ---------------- */
+
+if(A=="10593"){
+pintar(5,9,"SR A<br>NRC 10593<br>A2",colorSR)
+pintar(5,10,"SR A<br>NRC 10593<br>A2",colorSR)
+}
+
+if(A=="10591"){
+pintar(5,11,"SR A<br>NRC 10591<br>A1",colorSR)
+pintar(5,12,"SR A<br>NRC 10591<br>A1",colorSR)
+}
+
+if(A=="10597"){
+pintar(5,13,"SR A<br>NRC 10597<br>A4",colorSR)
+pintar(5,14,"SR A<br>NRC 10597<br>A4",colorSR)
+}
+
+if(A=="10595"){
+pintar(5,15,"SR A<br>NRC 10595<br>A3",colorSR)
+pintar(5,16,"SR A<br>NRC 10595<br>A3",colorSR)
+}
+
+if(A=="10599"){
+pintar(5,9,"SR A<br>NRC 10599<br>A5",colorSR)
+pintar(5,10,"SR A<br>NRC 10599<br>A5",colorSR)
+}
+
+if(A=="10601"){
+pintar(5,13,"SR A<br>NRC 10601<br>A6",colorSR)
+pintar(5,14,"SR A<br>NRC 10601<br>A6",colorSR)
+}
+
+if(A=="10603"){
+pintar(5,15,"SR A<br>NRC 10603<br>A7",colorSR)
+pintar(5,16,"SR A<br>NRC 10603<br>A7",colorSR)
+}
+
+if(A=="10605"){
+pintar(6,11,"SR A<br>NRC 10605<br>A8",colorSR)
+pintar(6,12,"SR A<br>NRC 10605<br>A8",colorSR)
+}
+
+if(A=="12217"){
+pintar(6,13,"SR A<br>NRC 12217<br>A0",colorSR)
+pintar(6,14,"SR A<br>NRC 12217<br>A0",colorSR)
+}
+
+if(A=="10607"){
+pintar(6,15,"SR A<br>NRC 10607<br>A9",colorSR)
+pintar(6,16,"SR A<br>NRC 10607<br>A9",colorSR)
+}
+
+if(A=="12220"){
+pintar(6,15,"SR A<br>NRC 12220<br>1A",colorSR)
+pintar(6,16,"SR A<br>NRC 12220<br>1A",colorSR)
+}
+
+}
+
+function actualizarSE(){
+
+let T=document.getElementById("seT").value
+let L=document.getElementById("seL")
+let A=document.getElementById("seA")
+
+L.innerHTML="<option value=''>L</option>"
+A.innerHTML="<option value=''>A</option>"
+
+let datos={
+
+1:{L:"10524",A:"10523"},
+2:{L:"10526",A:"10525"},
+3:{L:"10528",A:"10527"},
+4:{L:"10530",A:"10529"},
+5:{L:"10532",A:"10531"},
+6:{L:"10534",A:"10533"},
+7:{L:"10536",A:"10535"},
+8:{L:"10538",A:"10537"},
+9:{L:"10540",A:"10539"}
+
+}
+
+if(!datos[T]) return
+
+let opL=document.createElement("option")
+opL.value=datos[T].L
+opL.text=datos[T].L+" L"+T
+L.appendChild(opL)
+
+let opA=document.createElement("option")
+opA.value=datos[T].A
+opA.text=datos[T].A+" A"+T
+A.appendChild(opA)
+
+se()
+
+}
+
+function se(){
+
+limpiar("SE")
+
+let T=document.getElementById("seT").value
+let L=document.getElementById("seL").value
+let A=document.getElementById("seA").value
+
+if(!T)return
+
+let nrcT={
+1:"2702",
+2:"2703",
+3:"2704",
+4:"2705",
+5:"6917",
+6:"6918",
+7:"6919",
+8:"6920",
+9:"6921"
+}
+
+let txtT="SE T<br>NRC "+nrcT[T]+"<br>T"+T
+
+/* TEORIAS */
+
+if(T==1){
+pintar(4,5,txtT,colorSE)
+pintar(4,6,txtT,colorSE)
+}
+
+if(T==2){
+pintar(4,7,txtT,colorSE)
+pintar(4,8,txtT,colorSE)
+}
+
+if(T==3){
+pintar(1,13,txtT,colorSE)
+pintar(1,14,txtT,colorSE)
+}
+
+if(T==4){
+pintar(1,15,txtT,colorSE)
+pintar(1,16,txtT,colorSE)
+}
+
+if(T==5){
+pintar(1,5,txtT,colorSE)
+pintar(1,6,txtT,colorSE)
+}
+
+if(T==6){
+pintar(1,7,txtT,colorSE)
+pintar(1,8,txtT,colorSE)
+}
+
+if(T==7){
+pintar(1,13,txtT,colorSE)
+pintar(1,14,txtT,colorSE)
+}
+
+if(T==8){
+pintar(1,15,txtT,colorSE)
+pintar(1,16,txtT,colorSE)
+}
+
+if(T==9){
+pintar(3,3,txtT,colorSE)
+pintar(3,4,txtT,colorSE)
+}
+
+/* LABORATORIOS */
+
+if(L=="10524"){ for(let i=1;i<=2;i++) pintar(5,i,"SE L<br>NRC 10524<br>L1",colorSE) }
+
+if(L=="10526"){ for(let i=3;i<=4;i++) pintar(5,i,"SE L<br>NRC 10526<br>L2",colorSE) }
+
+if(L=="10528"){ for(let i=5;i<=6;i++) pintar(5,i,"SE L<br>NRC 10528<br>L3",colorSE) }
+
+if(L=="10530"){ for(let i=7;i<=8;i++) pintar(5,i,"SE L<br>NRC 10530<br>L4",colorSE) }
+
+if(L=="10532"){ for(let i=1;i<=2;i++) pintar(2,i,"SE L<br>NRC 10532<br>L5",colorSE) }
+
+if(L=="10534"){ for(let i=3;i<=4;i++) pintar(2,i,"SE L<br>NRC 10534<br>L6",colorSE) }
+
+if(L=="10536"){ for(let i=5;i<=6;i++) pintar(2,i,"SE L<br>NRC 10536<br>L7",colorSE) }
+
+if(L=="10538"){ for(let i=7;i<=8;i++) pintar(2,i,"SE L<br>NRC 10538<br>L8",colorSE) }
+
+if(L=="10540"){ for(let i=13;i<=14;i++) pintar(5,i,"SE L<br>NRC 10540<br>L9",colorSE) }
+
+/* ACTIVIDADES */
+
+if(A=="10523")pintar(5,15,"SE A<br>NRC 10523<br>A1",colorSE)
+if(A=="10525")pintar(5,1,"SE A<br>NRC 10525<br>A2",colorSE)
+if(A=="10527")pintar(3,1,"SE A<br>NRC 10527<br>A3",colorSE)
+if(A=="10529")pintar(3,3,"SE A<br>NRC 10529<br>A4",colorSE)
+if(A=="10531")pintar(2,9,"SE A<br>NRC 10531<br>A5",colorSE)
+if(A=="10533")pintar(2,11,"SE A<br>NRC 10533<br>A6",colorSE)
+if(A=="10535")pintar(2,13,"SE A<br>NRC 10535<br>A7",colorSE)
+if(A=="10537")pintar(2,15,"SE A<br>NRC 10537<br>A8",colorSE)
+if(A=="10539")pintar(4,1,"SE A<br>NRC 10539<br>A9",colorSE)
+
+}
+
+function c2(){
+
+limpiar("CASOS")
+
+let nrc=document.getElementById("c2").value
+
+if(!nrc)return
+
+let seccion={
+2680:"M01",
+2681:"M02",
+2682:"M03",
+2683:"M04",
+2684:"M05",
+2685:"M06"
+}
+
+let txt="CASOS II<br>NRC "+nrc+"<br>"+seccion[nrc]
+
+/* VIERNES */
+
+if(nrc=="2680"){
+for(let i=1;i<=4;i++) pintar(5,i,txt,colorC2)
+}
+
+if(nrc=="2681"){
+for(let i=5;i<=8;i++) pintar(5,i,txt,colorC2)
+}
+
+if(nrc=="2682"){
+for(let i=13;i<=16;i++) pintar(5,i,txt,colorC2)
+}
+
+/* SABADO */
+
+if(nrc=="2683"){
+for(let i=1;i<=4;i++) pintar(6,i,txt,colorC2)
+}
+
+if(nrc=="2684"){
+for(let i=5;i<=8;i++) pintar(6,i,txt,colorC2)
+}
+
+if(nrc=="2685"){
+for(let i=13;i<=16;i++) pintar(6,i,txt,colorC2)
+}
+
+}
+
 function exportarHorario(){
 
 let horario = document.querySelector(".panel-horario")
@@ -988,7 +1797,3 @@ link.click()
 
 </body>
 </html>
-
-
-
-
