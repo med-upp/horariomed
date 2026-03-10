@@ -719,7 +719,7 @@ Exportar horario
 
 <input type="color" value="#ef4444" onchange="cambiarColor('farma',this.value)">
 
-<select id="farmaT" onchange="actualizarFarma()">
+<select id="farmaT" onchange="actualizarFARMA()">
 
 <option value="">T</option>
 
@@ -903,6 +903,7 @@ let colorDIG="#22c55e"
 let colorGEN="#6366f1"
 let colorSSI="#dc2626"
 let colorC3="#f59e0b"
+let colorFarma="#ef4444"
 
 function cambiarColor(curso,color){
 
@@ -929,6 +930,7 @@ if(curso=="dig") colorDIG=color
 if(curso=="gen") colorGEN=color
 if(curso=="ssi") colorSSI=color
 if(curso=="c3") colorC3=color
+if(curso=="farma") colorFarma=color
 
 }
 
@@ -1034,6 +1036,17 @@ else if(c.innerHTML.includes("MS")) c.style.background=colorMS
 else if(c.innerHTML.includes("RD")) c.style.background=colorRD
 else if(c.innerHTML.includes("BM")) c.style.background=colorBM
 else if(c.innerHTML.includes("AL")) c.style.background=colorAL
+else if(c.innerHTML.includes("BQ")) c.style.background=colorBQ
+else if(c.innerHTML.includes("EX")) c.style.background=colorEX
+else if(c.innerHTML.includes("CASOS I")) c.style.background=colorC1
+else if(c.innerHTML.includes("COM II")) c.style.background=colorCOM2
+else if(c.innerHTML.includes("CARDIO")) c.style.background=colorCARDIO
+else if(c.innerHTML.includes("RESPI")) c.style.background=colorRESPI
+else if(c.innerHTML.includes("DIG")) c.style.background=colorDIG
+else if(c.innerHTML.includes("GEN")) c.style.background=colorGEN
+else if(c.innerHTML.includes("SSI")) c.style.background=colorSSI
+else if(c.innerHTML.includes("CASOS III")) c.style.background=colorC3
+else if(c.innerHTML.includes("FARMA")) c.style.background=colorFarma
 
 c.style.color="white"
 
@@ -3844,6 +3857,187 @@ for(let i=9;i<=12;i++) pintar(6,i,txt,colorC3)
 
 if(nrc=="2739"){
 for(let i=9;i<=12;i++) pintar(6,i,txt,colorC3)
+}
+
+}
+
+function actualizarFARMA(){
+
+let T=document.getElementById("farmaT").value
+let select=document.getElementById("farmaP")
+
+select.innerHTML="<option value=''>P</option>"
+
+let datos={
+
+1:["2810"],
+2:["2812"],
+3:["2814"],
+4:["2816"],
+5:["2818"],
+6:["2820"],
+7:["2822"],
+8:["6558"],
+9:["6772"],
+0:["6783"],
+10:["9060"]
+
+}
+
+datos[T]?.forEach(nrc=>{
+
+let op=document.createElement("option")
+op.value=nrc
+op.text=nrc+" P"+T
+select.appendChild(op)
+
+})
+
+farma()
+
+}
+
+function farma(){
+
+limpiar("FARMA")
+
+let T=document.getElementById("farmaT").value
+let P=document.getElementById("farmaP").value
+
+if(!T)return
+
+let nrcT={
+1:"2809",
+2:"2811",
+3:"2813",
+4:"2815",
+5:"2817",
+6:"2819",
+7:"2821",
+8:"6557",
+9:"6771",
+0:"6782",
+10:"9059"
+}
+
+let etiqueta = (T==10?"1T":(T==0?"T0":"T"+T))
+
+let txt="FARMA T<br>NRC "+nrcT[T]+"<br>"+etiqueta
+
+
+/* -------- TEORIAS -------- */
+
+if(T==1){
+pintar(1,1,txt,colorFarma)
+pintar(1,2,txt,colorFarma)
+pintar(1,3,txt,colorFarma)
+}
+
+if(T==2){
+pintar(1,4,txt,colorFarma)
+pintar(1,5,txt,colorFarma)
+pintar(1,6,txt,colorFarma)
+}
+
+if(T==3){
+pintar(2,1,txt,colorFarma)
+pintar(2,2,txt,colorFarma)
+pintar(2,3,txt,colorFarma)
+}
+
+if(T==4){
+pintar(2,4,txt,colorFarma)
+pintar(2,5,txt,colorFarma)
+pintar(2,6,txt,colorFarma)
+}
+
+if(T==5){
+pintar(3,1,txt,colorFarma)
+pintar(3,2,txt,colorFarma)
+pintar(3,3,txt,colorFarma)
+}
+
+if(T==6){
+pintar(3,4,txt,colorFarma)
+pintar(3,5,txt,colorFarma)
+pintar(3,6,txt,colorFarma)
+}
+
+if(T==7){
+pintar(4,1,txt,colorFarma)
+pintar(4,2,txt,colorFarma)
+pintar(4,3,txt,colorFarma)
+}
+
+if(T==8){
+pintar(4,4,txt,colorFarma)
+pintar(4,5,txt,colorFarma)
+pintar(4,6,txt,colorFarma)
+}
+
+if(T==9){
+pintar(3,9,txt,colorFarma)
+pintar(3,10,txt,colorFarma)
+pintar(3,11,txt,colorFarma)
+}
+
+if(T==0){
+pintar(1,9,txt,colorFarma)
+pintar(1,10,txt,colorFarma)
+pintar(1,11,txt,colorFarma)
+}
+
+if(T==10){
+pintar(2,4,txt,colorFarma)
+pintar(2,5,txt,colorFarma)
+pintar(2,6,txt,colorFarma)
+}
+
+
+/* -------- PRACTICAS -------- */
+
+if(P=="2810"){
+for(let i=1;i<=4;i++) pintar(2,i,"FARMA P<br>NRC 2810<br>P1",colorFarma)
+}
+
+if(P=="2812"){
+for(let i=4;i<=8;i++) pintar(2,i,"FARMA P<br>NRC 2812<br>P2",colorFarma)
+}
+
+if(P=="2814"){
+for(let i=1;i<=4;i++) pintar(3,i,"FARMA P<br>NRC 2814<br>P3",colorFarma)
+}
+
+if(P=="2816"){
+for(let i=4;i<=8;i++) pintar(3,i,"FARMA P<br>NRC 2816<br>P4",colorFarma)
+}
+
+if(P=="2818"){
+for(let i=1;i<=4;i++) pintar(4,i,"FARMA P<br>NRC 2818<br>P5",colorFarma)
+}
+
+if(P=="2820"){
+for(let i=4;i<=8;i++) pintar(4,i,"FARMA P<br>NRC 2820<br>P6",colorFarma)
+}
+
+if(P=="2822"){
+for(let i=1;i<=4;i++) pintar(5,i,"FARMA P<br>NRC 2822<br>P7",colorFarma)
+}
+
+if(P=="6558"){
+for(let i=4;i<=8;i++) pintar(5,i,"FARMA P<br>NRC 6558<br>P8",colorFarma)
+}
+
+if(P=="6772"){
+for(let i=9;i<=12;i++) pintar(4,i,"FARMA P<br>NRC 6772<br>P9",colorFarma)
+}
+
+if(P=="6783"){
+for(let i=9;i<=12;i++) pintar(3,i,"FARMA P<br>NRC 6783<br>P0",colorFarma)
+}
+
+if(P=="9060"){
+for(let i=9;i<=12;i++) pintar(5,i,"FARMA P<br>NRC 9060<br>1P",colorFarma)
 }
 
 }
